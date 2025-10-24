@@ -108,13 +108,13 @@ divide [9 3 7 2 8]                                          divide [12 5 9 1 7 6
            3  7   9       /                                     [12 5]   [9]   [1 7]     [6]       [3 8]    [10]  [4 2]    [11]
             \     /      /                                           sort            sort               sort          sort
             [3 7 9]     /                                   [5  9  12]       [1  6  7]           [3  8  10]      [2  4  11]
-           /       \   /                                             mergeVector                          mergeVector
+           /       \   /                                               merge                                merge
       [9 3 7]     [2 8]                                              1 5 6 7 9 12                        2 3 4 8 10 11
-           \       /                                                                    mergeVector
-            [2 3 7 8 9]                                                         1 2 3 4 5 6 7 8 9 10 11 12
+             merge                                                                       merge
+          [2 3 7 8 9]                                                          1 2 3 4 5 6 7 8 9 10 11 12
                                                             
                                                             
-mergeVector                                                 mergeVector
+merge                                                 merge
 [9 3 7] y [2 8]                                             [12 5 9 1 7 6] y [3 8 10 4 2 11]
 	left                                                    	left   [12 5 9] [1 7 6]
 		9 + 3 -> 3 9                                        		12 + 5 -> 5 12
