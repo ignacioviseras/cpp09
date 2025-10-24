@@ -92,3 +92,44 @@ public:
 // forbidden here.
 // The management of errors related to duplicates is left to your
 // discretion.
+
+
+
+9 3 7 2 8                                                   12 5 9 1 7 6 3 8 10 4 2 11
+                                                            
+divide [9 3 7 2 8]                                          divide [12 5 9 1 7 6 3 8 10 4 2 11]
+	left [9 3 7]  rifgt [2 8]                               	left [12 5 9 1 7 6]  rifgt [3 8 10 4 2 11]
+                                                            
+                                                            
+        [9     3     7]   [2     8]                                   [12 5 9 1 7 6]                      [3 8 10 4 2 11]
+         \   /     /         /                                           /          \                     /            \ 
+          3 9   7           /                                       [12 5 9]       [1 7 6]              3 8 10        4 2 11
+           \   /           /                                        /    \         /    \              /    \        /    \
+           3  7   9       /                                     [12 5]   [9]   [1 7]     [6]       [3 8]    [10]  [4 2]    [11]
+            \     /      /                                           sort            sort               sort          sort
+            [3 7 9]     /                                   [5  9  12]       [1  6  7]           [3  8  10]      [2  4  11]
+           /       \   /                                             mergeVector                          mergeVector
+      [9 3 7]     [2 8]                                              1 5 6 7 9 12                        2 3 4 8 10 11
+           \       /                                                                    mergeVector
+            [2 3 7 8 9]                                                         1 2 3 4 5 6 7 8 9 10 11 12
+                                                            
+                                                            
+mergeVector                                                 mergeVector
+[9 3 7] y [2 8]                                             [12 5 9 1 7 6] y [3 8 10 4 2 11]
+	left                                                    	left   [12 5 9] [1 7 6]
+		9 + 3 -> 3 9                                        		12 + 5 -> 5 12
+		3 9 + 7 -> 3 7 9                                    		5 12 + 9 -> 5 9 12
+	left result [3 7 9]                                     		5 9 12 + 1 -> 1 5 9 12
+	right                                                   		1 5 9 12 + 7 -> 1 5 7 9 12
+		2 + 8 -> 2 8                                        		1 5 7 9 12 + 6 -> 1 5 6 7 9 12
+right result [2 8]                                      		left retsult [1 5 6 7 9 12]
+	final retsult                                           
+		3 7 9 + 2 8 -> 2 3 7 8 9                            right [3 8 10] [4 2 11]
+                                                            	3 + 8 -> 3 8
+                                                            	3 8 + 10 -> 3 8 10
+                                                            	3 8 10 + 4 -> 3 4 8 10
+                                                            	3 4 8 10 + 2 -> 2 3 4 8 10
+                                                            	2 3 4 8 10 + 11 -> 2 3 4 8 10 11
+                                                            right retsult [1 5 6 7 9 12]
+                                                            
+                                                            final result [1 5 6 7 9 12] + [2 3 4 8 10 11] -> 1 2 3 4 5 6 7 8 9 10 11 12
