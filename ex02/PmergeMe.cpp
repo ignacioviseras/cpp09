@@ -25,7 +25,7 @@ void PmergeMe::addNumber(int num) {
 	_deque.push_back(num);
 }
 
-static void mergeVector(std::vector<int> &v, int left, int right, int mid) {
+static void mergeVector(std::vector<int> &v, int left, int mid, int right) {
 	std::vector<int> temp;
 	int i = left;
 	int j = mid +1;
@@ -70,7 +70,7 @@ void PmergeMe::initVector() {
 		sortVector(_vec, 0, _vec.size() -1);
 }
 
-static void mergeDeque(std::deque<int> &d, int left, int right, int mid) {
+static void mergeDeque(std::deque<int> &d, int left, int mid, int right) {
 	std::deque<int> temp;
 	int x = left;
 	int y = mid +1;
@@ -123,6 +123,7 @@ void PmergeMe::printBefore(char **argv) const {
 }
 
 void PmergeMe::printAfter() const {
+	// std::cout << "Vector is orded: " << std::is_sorted(_vec.begin(), _vec.end()) << std::endl;
 	for (size_t i = 0; i < _vec.size(); ++i)
 		std::cout << _vec[i] << " ";
 	std::cout << std::endl;
