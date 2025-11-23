@@ -123,7 +123,8 @@ void PmergeMe::printBefore(char **argv) const {
 }
 
 void PmergeMe::printAfter() const {
-	// std::cout << "Vector is orded: " << std::is_sorted(_vec.begin(), _vec.end()) << std::endl;
+	// std::cout << "\nVector is orded: " << std::is_sorted(_vec.begin(), _vec.end()) << std::endl;
+	// std::cout << "Deque is orded: " << std::is_sorted(_deque.begin(), _deque.end()) << std::endl;
 	for (size_t i = 0; i < _vec.size(); ++i)
 		std::cout << _vec[i] << " ";
 	std::cout << std::endl;
